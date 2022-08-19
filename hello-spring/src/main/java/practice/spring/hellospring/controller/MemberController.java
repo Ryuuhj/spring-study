@@ -2,10 +2,13 @@ package practice.spring.hellospring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import practice.spring.hellospring.domain.Member;
 import practice.spring.hellospring.service.MemberService;
+
+import java.util.List;
 
 @Controller
 public class MemberController {
@@ -34,4 +37,13 @@ public class MemberController {
 
         return "redirect:/"; //작업 마친 이후 홈 화면으로 돌려보냄
     }
+
+    @GetMapping("/members")
+    public String list(Model model){
+        List<Member> members = memberService.findMembers();
+        model.addAttribute("members", members);
+        return "members/memberList";
+        //해당하는 뷰 템플릿(memberList)에 model에 담아 쉽게 옮기기 위함
+    }
 }
+
