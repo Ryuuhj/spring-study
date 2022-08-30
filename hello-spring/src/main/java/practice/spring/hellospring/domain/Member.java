@@ -1,7 +1,11 @@
 package practice.spring.hellospring.domain;
 
+import javax.persistence.*;
+
+@Entity
 public class Member {
 
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; //데이터를 구분하기 위해 시스템이 지정하는 id (임의의 값)
     private String name;
 
