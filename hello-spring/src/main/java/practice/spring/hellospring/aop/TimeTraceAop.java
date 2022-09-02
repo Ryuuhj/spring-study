@@ -1,6 +1,7 @@
 package practice.spring.hellospring.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class TimeTraceAop {
 
+    @Around("execution(* practice.spring.hellospring..*(..))")
     public Object execute(ProceedingJoinPoint joinPoint) throws Throwable {
         //구현 로직은 전과 동일
         long start = System.currentTimeMillis();
