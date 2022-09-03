@@ -16,11 +16,12 @@ public class MemberController {
     //0. MemberService 이용하기 위한 생성자
     private final MemberService memberService;
 
-    //Controller에 Service 삽입
+    //Controller에 Service 삽입 (injection)
     @Autowired
     public MemberController(MemberService memberService) {
-
         this.memberService = memberService;
+        System.out.println("memberService = " + memberService.getClass());
+
     }
 
     @GetMapping("/members/new")
